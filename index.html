@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quante Salsicce? - Il Calcolatore per Grigliate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="https://instagram.com/quantesalsicce.it/" target="_blank" class="btn-instagram-top">
+    📸 Seguici su Instagram
+</a>
+
+
+    <div class="container">
+        <h1>Quante Salsicce?</h1>
+        <p class="subtitle">Tu metti gli amici, noi contiamo le salsicce.</p>
+
+        <div class="card">
+            <label>👥conta gli amici</label>
+            <input type="number" id="peopleInput" placeholder="Es. 10" min="1" value="10">
+
+            <label>🥩 Cosa buttiamo sulla griglia?</label>
+            
+            <!-- CATEGORIA: MAIALE -->
+            <div class="category-title">🐖 MAIALE</div>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="salsiccia">🌭 Salsicce / Salamelle</div>
+                <div class="meat-checkbox" data-type="costine">🍖 Costine (Puntine)</div>
+                <div class="meat-checkbox" data-type="pancetta">🥓 Pancetta a fette</div>
+                <div class="meat-checkbox" data-type="coppa">🥩 Coppa (Braciole)</div>
+            </div>
+
+            <!-- CATEGORIA: MANZO -->
+            <div class="category-title">🐂 MANZO & TRADIZIONE</div>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="fiorentina">🥩Fiorentina</div>
+                <div class="meat-checkbox" data-type="spiedini">🍢 spiedini</div>
+            </div>
+
+            <!-- CATEGORIA: POLLO -->
+            <div class="category-title">🐓 POLLO</div>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="pollo">🍗 Ali / Cosce di Pollo</div>
+            </div>
+
+            <!-- CATEGORIA: VERDURE CLASSICHE -->
+            <div class="category-title">🥗 VERDURE CLASSICHE</div>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="zucchine">🥒 Zucchine</div>
+                <div class="meat-checkbox" data-type="melanzane">🍆 Melanzane</div>
+                <div class="meat-checkbox" data-type="peperoni">🫑 Peperoni</div>
+                <div class="meat-checkbox" data-type="cipolla">🧅 Cipolle</div>
+            </div>
+
+            <!-- CATEGORIA: ANTIPASTI -->
+            <div class="category-title">🥖 ANTIPASTI & CARBO</div>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="bruschette">🍞 Pane per Bruschette</div>
+            </div>
+
+            <!-- SELETTORE ALCOLOMETRO -->
+            <label>🍺 Quanto bevono i tuoi amici?</label>
+            <div class="btn-group" id="alcGroup">
+                <div class="btn-select" data-value="astemi">Astemi</div>
+                <div class="btn-select active" data-value="standard">Standard</div>
+                <div class="btn-select" data-value="alpini">Alpini 🌋</div>
+            </div>
+
+            <!-- TIPOLOGIA BEVANDE -->
+            <label>🍹 Cosa si beve stasera? (Seleziona i tipi)</label>
+            <div class="meat-grid">
+                <div class="meat-checkbox" data-type="drink_birra">🍺 Birra</div>
+                <div class="meat-checkbox" data-type="drink_vino">🍷 Vino</div>
+                <div class="meat-checkbox" data-type="drink_amaro">🥃 Amaro</div>
+            </div>
+
+            <label>🌱 Ci sono vegetariani?</label>
+            <div class="btn-group" id="vegGroup">
+                <div class="btn-select active" data-value="0">No</div>
+                <div class="btn-select" data-value="1">Sì, 1</div>
+                <div class="btn-select" data-value="2">Più di 1</div>
+            </div>
+        </div>
+        
+
+        <button class="btn-fire" onclick="calculateGrill()">🔥 Calcola la Brace</button>
+
+        <div class="results-card" id="resultsCard">
+            <h2 style="color: white; margin-top:0; margin-bottom: 5px;">🛒 La tua spesa:</h2>
+            <p style="color: #A0A0A5; font-size: 0.9rem; margin-top: 0; margin-bottom: 20px; font-style: italic;">
+                ℹ️ Calcolo scientifico basato su una media reale di 450g di carne a persona, bilanciata in base ai tagli scelti per azzerare gli sprechi.
+            </p>
+            <div id="sectionsContainer"></div>
+            <button class="btn-whatsapp" id="waBtn" onclick="shareWhatsApp()">🟢 Invia sul gruppo WhatsApp</button>
+            <a href="https://instagram.com/quantesalsicce.it/" target="_blank" class="btn-instagram-link" id="igBtn">
+    <button class="btn-instagram" type="button">📸 Seguici su Instagram per altre grigliate</button>
+</a>
+
+            
+        </div>
+
+        <!-- NUOVA SEZIONE: FAQ GOLIARDICHE -->
+        <div class="faq-section">
+            <div class="faq-item">
+                <h4>🤔 I calcoli sono affidabili?</h4>
+                <p>Sì, la matematica si basa sulle reali medie di consumo dei grigliatori italiani. Se avanza cibo, significa che tra i tuoi amici c'è qualcuno che ha finto di avere fame.</p>
+            </div>
+            <div class="faq-item">
+                <h4>🔒 Posso registrarmi o creare un account?</h4>
+                <p>No. Odiate le password e le odiamo anche noi. Entri, calcoli, copi su WhatsApp e vai a grigliare in santa pace.</p>
+            </div>
+            <div class="faq-item">
+                <h4>🌋 Cosa succede se seleziono il livello "Alpini"?</h4>
+                <p>Noi ti diamo le dosi corrette per sopravvivere. Quello che succederà dopo le ore 23:00 sul gruppo WhatsApp della comitiva non è più una nostra responsabilità legale.</p>
+            </div>
+        </div>
+
+        <!-- NOTA SULLA PRIVACY DI FACCIATA -->
+        <div class="footer-privacy">
+            Questo sito non usa cookie traccianti e non gliene frega niente dei tuoi dati personali. Pensiamo solo alle salsicce.
+        </div>
+    </div>
+    <div class="footer-copyright">
+    © 2026 QuanteSalsicce.it. Tutti i diritti riservati. L'originale dal 2026.
+</div>
+
+    
+
+    <script src="script.js"></script>
+</body>
+
+</html>
